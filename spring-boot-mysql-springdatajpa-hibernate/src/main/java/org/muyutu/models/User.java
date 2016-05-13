@@ -1,4 +1,4 @@
-package netgloo.models;
+package org.muyutu.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

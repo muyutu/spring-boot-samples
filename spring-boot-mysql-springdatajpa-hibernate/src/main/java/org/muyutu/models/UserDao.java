@@ -1,8 +1,8 @@
-package netgloo.models;
+package org.muyutu.models;
 
 import javax.transaction.Transactional;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  * A DAO for the entity User is simply created by extending the CrudRepository
@@ -14,7 +14,7 @@ import org.springframework.data.repository.CrudRepository;
  * @author netgloo
  */
 @Transactional
-public interface UserDao extends CrudRepository<User, Long> {
+public interface UserDao extends PagingAndSortingRepository<User, Long> {
 
   /**
    * Return the user having the passed email or null if no user is found.
@@ -22,5 +22,12 @@ public interface UserDao extends CrudRepository<User, Long> {
    * @param email the user email.
    */
   public User findByEmail(String email);
+  
+  /**
+   * Return the user having the passed name or null if no user is found.
+   * @param name the name of the user
+   * @return
+   */
+  public User findByName(String name);
 
 } // class UserDao

@@ -1,8 +1,7 @@
-package netgloo.controllers;
+package org.muyutu.controllers;
 
-import netgloo.models.User;
-import netgloo.models.UserDao;
-
+import org.muyutu.models.User;
+import org.muyutu.models.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
