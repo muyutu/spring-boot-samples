@@ -1,7 +1,11 @@
-package org.muyutu.models;
+package org.muyutu.dao;
 
 import javax.transaction.Transactional;
 
+import org.muyutu.models.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
@@ -29,5 +33,8 @@ public interface UserDao extends PagingAndSortingRepository<User, Long> {
    * @return
    */
   public User findByName(String name);
+  
+  @Query("select u from User u join Group g on u.groupId = g.id where g.name= ?1 ")
+  public Page<User> getUserByGroupName(String groupname, Pageable pageable);
 
 } // class UserDao

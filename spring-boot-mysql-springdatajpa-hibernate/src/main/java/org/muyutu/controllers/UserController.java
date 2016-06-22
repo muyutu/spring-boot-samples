@@ -1,8 +1,10 @@
 package org.muyutu.controllers;
 
+import org.muyutu.dao.UserDao;
 import org.muyutu.models.User;
-import org.muyutu.models.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -102,11 +104,20 @@ public class UserController {
     }
     return "User succesfully updated!";
   }
+  
+  
+  @RequestMapping("get-by-groupName")
+  @ResponseBody
+  public Page<User> getByGroupName(String groupName, Pageable pageable){
+	  Page<User> users = userDao.getUserByGroupName(groupName, pageable);
+	  return users;
+  }
 
   // ------------------------
   // PRIVATE FIELDS
   // ------------------------
 
+  
   @Autowired
   private UserDao userDao;
   
